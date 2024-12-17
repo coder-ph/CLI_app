@@ -56,3 +56,30 @@ def create_student():
     session.add(student)
     session.commit()
     print(f'The student with the name {first_name} {last_name} has been created with id {student.id}')
+    
+def update_student():
+    student_id = int(input('Enter the student ID to be updated'))
+    student = session.get(Student, student_id)
+    if not student:
+        print(f'THe student with the ID {student_id} doess not exist. Enter correct id')
+        return
+    
+    student.first_name = str(input("Enter student's first name")) or student.first_name
+    student.last_name = str(input("Enter student's last name")) or student.last_name
+    updated_teacher_id = int(input('Enter the teacher ID')) or student.teacher_id
+    teacher = session.get(Teacher, updated_teacher_id)
+    
+    if not teacher:
+        print(f'Teacher with ID {updated_teacher_id} does not exist')
+        
+    else:
+        student.teacher_id = updated_teacher_id
+    updated_subject = int(input("Enter the updated subject ID")) or student.subject_id
+    subject = session.get(Subject, updated_subject)
+    if not subject:
+        print("Enter the correct subject ID")
+        return
+    student.subject = updated_subject
+    session.commit()
+        
+        

@@ -32,7 +32,13 @@ def update_teacher():
         print(f'Teacher with id {teacher.id} has been updated successfully')
         
 def delete_teacher():
-    pass
+    id = int(input("Enter the teacher ID to be deleted"))
+    teacher = session.get(Teacher, id)
+    if not teacher:
+        print(f'Teacher with ID {id} does not exist. Enter the correct ID')
+        return
+    session.delete(teacher)
+    session.commit()
         
         
     

@@ -10,7 +10,15 @@ session = Session()
 def initialize_db():
     Base.metadata.create_all(engine)
     print('Initializing Database ...!')
+
+def create_teacher():
+    name = str(input('Enter the name of the teacher'))  
+    email = input('Enter a valid email ')
+    teacher = Teacher(name= name, email=email)
+    session.add(teacher)
+    session.commit()
     
 def create_student():
+    name = str(input("Enter the student's name"))
     
     

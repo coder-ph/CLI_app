@@ -18,6 +18,24 @@ def create_teacher():
     session.add(teacher)
     session.commit()
     
+def update_teacher():
+    id = int(input("Enter the teacher's ID to be updated"))
+    teacher = session.get(Teacher, id)
+    
+    if not teacher:
+        print(f'No record for the teacher with id {id}')
+        return
+    else:
+        teacher.name = str(input("Enter new teacher's name (current name is {teacher.name})")) or teacher.name
+        teacher.email = input("Enter new teacher's email adress. (current email is {teacher.mail})") or teacher.email
+        session.commit()
+        print(f'Teacher with id {teacher.id} has been updated successfully')
+        
+def delete_teacher():
+    pass
+        
+        
+    
 def create_student():
     name = str(input("Enter the student's name"))
     

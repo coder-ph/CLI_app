@@ -130,3 +130,12 @@ def delete_subject():
 
 def assign_student():
     pass
+
+def list_students():
+    students = session.query(Student).all()
+    if len(students)< 1:
+        print("No students enrolled yet!")
+    else:
+        for student in students:
+            print(student)
+

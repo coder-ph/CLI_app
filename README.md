@@ -22,3 +22,61 @@ sys (for exiting the CLI)
 ### Prerequisites
 - Python 3.8 or higher installed on your system.
 - Basic understanding of Python and databases.
+
+### Steps to Run the Project
+- 1. Clone the Repository
+`git clone <repository-url>`
+`cd <project-directory>`
+
+- 2. Set Up a Virtual Environment
+- `pipenv install`
+- `pipenv shell`
+
+- 3. Run the Application
+`python3 app.py`
+
+## Usage
+- When the application starts, it initializes the database (students.db) if it doesn't already exist.
+- You will be presented with a menu of options for managing teachers, students, and subjects.
+- Enter the corresponding number to perform an action.
+
+## Menu Options
+```
+Welcome to Student Management CLI!!
+1. Create a teacher
+2. Update teacher
+3. Delete teacher
+4. Create a student
+5. Update student
+6. Delete student
+7. Create a subject
+8. Update a subject
+9. Delete a subject
+10. Assign a student
+11. List teachers
+12. List students
+13. View students by teacher
+14. Exit
+```
+## Future Enhancements
+- Add advanced querying features (e.g., filter by specific criteria).
+- Improve error handling and validation.
+- Add unit tests for core functionalities.
+
+## Contributing
+Contributions are welcome! To contribute:
+
+- 1. Fork the repository.
+- 2. Create a new branch:
+`git checkout -b feature-branch-name`
+
+- 3. Commit your changes:
+`git commit -m "Description of changes"`
+
+- 4. Push to your branch:
+`git push origin feature-branch-name`
+
+- 5. Submit a pull request.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.

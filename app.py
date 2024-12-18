@@ -49,7 +49,7 @@ def create_student():
     teacher = session.get(Teacher, teacher_id)
     subject = session.get(Subject, subject_id)
     
-    if not teacher and subject:
+    if not teacher or subject:
         print(f"Either the teacher id ({teacher_id} or subject id {subject_id} does not exist: )")
         return
     student =Student(first_name=first_name, last_name= last_name, teacher_id= teacher_id, subject_id = subject_id)
@@ -79,7 +79,7 @@ def update_student():
     if not subject:
         print("Enter the correct subject ID")
         return
-    student.subject = updated_subject
+    student.subject_id = updated_subject
     session.commit()
     
 def delete_student():
@@ -179,36 +179,38 @@ def main_menu():
         print('13. view student by teacher')
         print('14. exit')
         
-        choice = int(input('Enter your choice'))
-        if choice ==1:
-            create_teacher()
-        elif choice == 2:
-            update_teacher()
-        elif choice ==3:
-            delete_teacher()
-        elif choice == 4:
-            create_student()
-        elif choice == 5:
-            update_student()
-        elif choice == 6:
-            delete_student()
-        elif choice ==7:
-            create_subject()
-        elif choice == 8:
-            update_subject()
-        elif choice == 9:
-            delete_subject()
-        elif choice == 10:
-            assign_student()
-        elif choice == 11:
-            list_teachers()
-        elif choice == 12:
-            list_students()
-        elif choice == 13:
-            students_by_teacher()
-        elif choice == 14:
-            sys.exit()
-        else:
+        try:
+            choice = int(input('Enter your choice'))
+            if choice ==1:
+                create_teacher()
+            elif choice == 2:
+                update_teacher()
+            elif choice ==3:
+                delete_teacher()
+            elif choice == 4:
+                create_student()
+            elif choice == 5:
+                update_student()
+            elif choice == 6:
+                delete_student()
+            elif choice ==7:
+                create_subject()
+            elif choice == 8:
+                update_subject()
+            elif choice == 9:
+                delete_subject()
+            elif choice == 10:
+                assign_student()
+            elif choice == 11:
+                list_teachers()
+            elif choice == 12:
+                list_students()
+            elif choice == 13:
+                students_by_teacher()
+            elif choice == 14:
+                sys.exit()
+                
+        except ValueError:
             print('Invalid choice, please try again')
             
 if __name__ == '__main__':

@@ -161,5 +161,57 @@ def students_by_teacher():
     for student in students:
         print(student)
         
-
+def main_menu():
+    while True:
+        print('\n Welcome to Student Management CLI!!')
+        print('1. create a teacher')
+        print('2. update teacher')
+        print('3. delete teacher')
+        print('4. create student')
+        print('5. update student')
+        print('6. detele student')
+        print('7. create subject')
+        print('8. update subject')
+        print('9. detele subject')
+        print('10. Assign a tm')
+        print('11. list teachers')
+        print('12. list students')
+        print('13. view student by teacher')
+        print('14. exit')
+        
+        choice = int(input('Enter your choice'))
+        if choice ==1:
+            create_teacher()
+        elif choice == 2:
+            update_teacher()
+        elif choice ==3:
+            delete_teacher()
+        elif choice == 4:
+            create_student()
+        elif choice == 5:
+            update_student()
+        elif choice == 6:
+            delete_student()
+        elif choice ==7:
+            create_subject()
+        elif choice == 8:
+            update_subject()
+        elif choice == 9:
+            delete_subject()
+        elif choice == 10:
+            assign_student()
+        elif choice == 11:
+            list_teachers()
+        elif choice == 12:
+            list_students()
+        elif choice == 13:
+            students_by_teacher()
+        elif choice == 14:
+            sys.exit()
+        else:
+            print('Invalid choice, please try again')
+            
+if __name__ == '__main__':
+    initialize_db()
+    main_menu()
     

@@ -17,6 +17,7 @@ def create_teacher():
     teacher = Teacher(name= name, email=email)
     session.add(teacher)
     session.commit()
+    print(f"Teacher {name} has been created successfully")
     
 def update_teacher():
     id = int(input("Enter the teacher's ID to be updated: "))
@@ -26,7 +27,7 @@ def update_teacher():
         print(f'No record for the teacher with id {id}')
         return
     else:
-        teacher.name = str(input("Enter new teacher's name (current name is {teacher.name})")) or teacher.name
+        teacher.name = str(input(f"Enter new teacher's name (current name is {teacher.name})")) or teacher.name
         teacher.email = input("Enter new teacher's email adress. (current email is {teacher.mail})") or teacher.email
         session.commit()
         print(f'Teacher with id {teacher.id} has been updated successfully')
@@ -64,9 +65,9 @@ def update_student():
         print(f'THe student with the ID {student_id} doess not exist. Enter correct id')
         return
     
-    student.first_name = str(input("Enter student's first name: ")) or student.first_name
-    student.last_name = str(input("Enter student's last name: ")) or student.last_name
-    updated_teacher_id = int(input('Enter the teacher ID: ')) or student.teacher_id
+    student.first_name = str(input(f"Enter student's first name (current is {student.first_name}): ")) or student.first_name
+    student.last_name = str(input(f"Enter student's last name (current is {student.last_name}): ")) or student.last_name
+    updated_teacher_id = int(input(f'Enter the teacher ID: ')) or student.teacher_id
     teacher = session.get(Teacher, updated_teacher_id)
     
     if not teacher:
@@ -81,6 +82,7 @@ def update_student():
         return
     student.subject_id = updated_subject
     session.commit()
+    print("Stdent updated successfully")
     
 def delete_student():
     id = int(input("Enter the student ID to be deleted: "))  
@@ -101,6 +103,7 @@ def create_subject():
     subject = Subject(subject_name=subject_name, teacher_id=teacher_id)
     session.add(subject)
     session.commit()
+    print(f"{subject_name} subject has been created successfully")
     
 def update_subject():
     id = int(input("Enter the subject ID to be updated: "))
@@ -108,7 +111,7 @@ def update_subject():
     if not subject:
         print(f'The subject ID {id} is invalid!')
         return
-    subject.subject_name = str(input(f"Enter a valid subject name (current subject name- {subject.students})")) or subject.subject_name
+    subject.subject_name = str(input(f"Enter a valid subject name (current subject name- {subject.subject_name})")) or subject.subject_name
     teacher_id = int(input(f"Enter a valid teacher id. Current id is {subject.teacher_id}: "))
     teacher = session.get(Teacher, teacher_id)
     if not teacher:
@@ -127,6 +130,7 @@ def delete_subject():
         return
     session.delete(subject)
     session.commit()
+    print(f"The subject with id {id} has been deleted successfully")
 
 def assign_student():
     pass
@@ -159,7 +163,7 @@ def students_by_teacher():
         return
     print(f'The students to teacher id {teacher_id} are ...')
     for student in students:
-        print(student)
+        print(f"{student.first_name} {student.last_name}")
         
 def main_menu():
     while True:
@@ -173,14 +177,14 @@ def main_menu():
         print('7. create subject')
         print('8. update subject')
         print('9. detele subject')
-        print('10. Assign a tm')
+        print('10. Assign a teacher')
         print('11. list teachers')
         print('12. list students')
         print('13. view student by teacher')
         print('14. exit')
         
         try:
-            choice = int(input('Enter your choice'))
+            choice = int(input('Enter your choice: '))
             if choice ==1:
                 create_teacher()
             elif choice == 2:

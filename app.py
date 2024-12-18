@@ -146,3 +146,20 @@ def list_teachers():
     else:
         for teacher in teachers:
             print(teacher)
+
+def students_by_teacher():
+    teacher_id = int(input("Enter the teacher ID: "))
+    teacher = session.get(Teacher, teacher_id)
+    if not teacher:
+        print("Invalid teacher ID entered")
+        return
+    students = teacher.students
+    if len(students) < 1:
+        print(f"Teacher with ID {teacher_id} has no students yet")
+        return
+    print(f'The students to teacher id {teacher_id} are ...')
+    for student in students:
+        print(student)
+        
+
+    

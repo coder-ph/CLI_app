@@ -57,4 +57,10 @@ def add_teachers():
     session.commit()
 add_teachers()
 
+def add_subjects():
+    for subject in subjects:
+        session.add(subject)
+    session.commit()
+
+add_subjects()
     

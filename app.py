@@ -50,7 +50,7 @@ def create_student():
     subject = session.get(Subject, subject_id)
     
     if not teacher and subject:
-        print(f"Either the teacher id ({teacher_id} or subject id {subject_id} does not exist)")
+        print(f"Either the teacher id ({teacher_id} or subject id {subject_id} does not exist: )")
         return
     student =Student(first_name=first_name, last_name= last_name, teacher_id= teacher_id, subject_id = subject_id)
     session.add(student)
@@ -58,28 +58,50 @@ def create_student():
     print(f'The student with the name {first_name} {last_name} has been created with id {student.id}')
     
 def update_student():
-    student_id = int(input('Enter the student ID to be updated'))
+    student_id = int(input('Enter the student ID to be updated: '))
     student = session.get(Student, student_id)
     if not student:
         print(f'THe student with the ID {student_id} doess not exist. Enter correct id')
         return
     
-    student.first_name = str(input("Enter student's first name")) or student.first_name
-    student.last_name = str(input("Enter student's last name")) or student.last_name
-    updated_teacher_id = int(input('Enter the teacher ID')) or student.teacher_id
+    student.first_name = str(input("Enter student's first name: ")) or student.first_name
+    student.last_name = str(input("Enter student's last name: ")) or student.last_name
+    updated_teacher_id = int(input('Enter the teacher ID: ')) or student.teacher_id
     teacher = session.get(Teacher, updated_teacher_id)
     
     if not teacher:
         print(f'Teacher with ID {updated_teacher_id} does not exist')
-        
+        return
     else:
         student.teacher_id = updated_teacher_id
-    updated_subject = int(input("Enter the updated subject ID")) or student.subject_id
+    updated_subject = int(input("Enter the updated subject ID: ")) or student.subject_id
     subject = session.get(Subject, updated_subject)
     if not subject:
         print("Enter the correct subject ID")
         return
     student.subject = updated_subject
     session.commit()
-        
+    
+def delete_student():
+    id = int(input("Enter the student ID to be deleted: "))  
+    student = session.get(Student, id)
+    if not student:
+        print(f'The student ID {id} does not exist, enter the correct ID')
+        return
+    session.delete(student)
+    session.commit()  
+    
+def create_subject():
+    subject_name =str(input("Enter the subject name: "))
+    teacher_id = int(input("Enter the teacher ID for the subject: "))
+    teacher = session.get(Teacher, teacher_id)
+    if not teacher:
+        print(f'The teacher with ID {teacher} is invalid')
+        return
+    subject = Subject(subject_name=subject_name, teacher_id=teacher_id)
+    session.add(subject)
+    session.commit()
+    
+def update_subject():
+    id = int(input("Enter "))
         

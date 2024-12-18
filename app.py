@@ -133,7 +133,17 @@ def delete_subject():
     print(f"The subject with id {id} has been deleted successfully")
 
 def assign_student():
-    pass
+    student_id = int(input("Enter the student id to assign to a teacher: "))
+    teacher_id = int(input("Enter the teacher Id"))
+    student = session.get(Student, student_id)
+    teacher = session.get(Teacher, teacher_id)
+    
+    if not student or teacher:
+        print('Invalid student id or teacher id')
+        return
+    student.teacher_id = teacher_id
+    session.commit()
+    print(f"Student with {student_id} has been assigned successfully")
 
 def list_students():
     students = session.query(Student).all()

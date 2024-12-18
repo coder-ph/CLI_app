@@ -17,10 +17,15 @@ students = [
         teacher_id = random.randint(1, 5),
         subject_id = random.randint(1, 5)
     )
+    for i in range(6)
 ]
 
 teachers = [
     Teacher(
-        
+        name = fake.name(),
+        email = fake.email()
     )
+    for i in range(5)
 ]
+
+subj

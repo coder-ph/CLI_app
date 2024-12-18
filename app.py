@@ -103,5 +103,22 @@ def create_subject():
     session.commit()
     
 def update_subject():
-    id = int(input("Enter "))
+    id = int(input("Enter the subject ID to be updated: "))
+    subject = session.get(Subject, id)
+    if not subject:
+        print(f'The subject ID {id} is invalid!')
+        return
+    subject.subject_name = str(input(f"Enter a valid subject name (current subject name- {subject.students})")) or subject.subject_name
+    teacher_id = int(input(f"Enter a valid teacher id. Current id is {subject.teacher_id}: "))
+    teacher = session.get(Teacher, teacher_id)
+    if not teacher:
+        print("The teacher ID entered is invalid teacher ID: ")
+        return
+    else:
+        subject.teacher_id = teacher_id
+    session.commit()
+    print("The subject has been updated successfully!")
+    
+    
+    
         

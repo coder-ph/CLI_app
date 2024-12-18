@@ -12,9 +12,9 @@ def initialize_db():
     print('Initializing Database ...!')
 
 def create_teacher():
-    name = str(input('Enter the name of the teacher: '))  
+    name = str(input('Enter the name of the teacher: '))
     email = input('Enter a valid email ')
-    teacher = Teacher(name= name, email=email)
+    teacher = Teacher(name=name, email=email)
     session.add(teacher)
     session.commit()
     print(f"Teacher {name} has been created successfully")
@@ -53,6 +53,7 @@ def create_student():
     if not teacher or subject:
         print(f"Either the teacher id ({teacher_id} or subject id {subject_id} does not exist: )")
         return
+    
     student =Student(first_name=first_name, last_name= last_name, teacher_id= teacher_id, subject_id = subject_id)
     session.add(student)
     session.commit()
@@ -134,11 +135,11 @@ def delete_subject():
 
 def assign_student():
     student_id = int(input("Enter the student id to assign to a teacher: "))
-    teacher_id = int(input("Enter the teacher Id"))
+    teacher_id = int(input("Enter the teacher Id: "))
     student = session.get(Student, student_id)
     teacher = session.get(Teacher, teacher_id)
     
-    if not student or teacher:
+    if not student or not teacher:
         print('Invalid student id or teacher id')
         return
     student.teacher_id = teacher_id
@@ -226,9 +227,11 @@ def main_menu():
                 sys.exit()
                 
         except ValueError:
+            
             print('Invalid choice, please try again')
             
 if __name__ == '__main__':
+    
     initialize_db()
     main_menu()
     

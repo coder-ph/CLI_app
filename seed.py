@@ -1,2 +1,2 @@
 from faker import Faker
-fake = faker()
+fake = Faker()

@@ -119,6 +119,11 @@ def update_subject():
     session.commit()
     print("The subject has been updated successfully!")
     
-    
-    
-        
+def delete_subject():
+    id = int(input("Enter a valid subject ID"))
+    subject = session.get(Subject, id)
+    if not subject:
+        print("The subject ID entered is invalid")
+        return
+    session.delete(subject)
+    session.commit()

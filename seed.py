@@ -49,18 +49,18 @@ def add_students():
         session.add(student)    
     session.commit()
     
-add_students()
+# add_students()
 
 def add_teachers():
     for teacher in teachers:
         session.add(teacher)
     session.commit()
-add_teachers()
+# add_teachers()
 
 def add_subjects():
     for subject in subjects:
         session.add(subject)
     session.commit()
 
-add_subjects()
+# add_subjects()
     

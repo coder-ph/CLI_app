@@ -139,3 +139,10 @@ def list_students():
         for student in students:
             print(student)
 
+def list_teachers():
+    teachers = session.query(Teacher).all()
+    if len(teachers)< 1:
+        print("No teachers yet!")
+    else:
+        for teacher in teachers:
+            print(teacher)

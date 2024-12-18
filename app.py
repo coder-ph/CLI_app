@@ -151,7 +151,7 @@ def list_students():
         print("No students enrolled yet!")
     else:
         for student in students:
-            print(student)
+            print(f'{student.first_name} {student.last_name}')
 
 def list_teachers():
     teachers = session.query(Teacher).all()
@@ -159,7 +159,7 @@ def list_teachers():
         print("No teachers yet!")
     else:
         for teacher in teachers:
-            print(teacher)
+            print(f'{teacher.name}')
 
 def students_by_teacher():
     teacher_id = int(input("Enter the teacher ID: "))
@@ -177,7 +177,7 @@ def students_by_teacher():
         
 def main_menu():
     while True:
-        print('\n Welcome to Student Management CLI!!')
+        print('\n Welcome to Student Management CLI!! \n')
         print('1. create a teacher')
         print('2. update teacher')
         print('3. delete teacher')
@@ -192,9 +192,10 @@ def main_menu():
         print('12. list students')
         print('13. view student by teacher')
         print('14. exit')
-        
+        print('\n')
         try:
             choice = int(input('Enter your choice: '))
+            print('\n')
             if choice ==1:
                 create_teacher()
             elif choice == 2:

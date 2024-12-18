@@ -6,7 +6,7 @@ import random
 from faker import Faker
 fake = Faker()
 if __name__ == '__main__':
-    engine = create_engine('sqlite:///students.db')
+    engine = create_engine('sqlite:///students.db', echo=True)
     Session = sessionmaker(bind=engine)
     session = Session()
 
@@ -17,7 +17,7 @@ students = [
         teacher_id = random.randint(1, 5),
         subject_id = random.randint(1, 5)
     )
-    for i in range(6)
+    for i in range(5)
 ]
 
 teachers = [
@@ -25,7 +25,7 @@ teachers = [
         name = fake.name(),
         email = fake.email()
     )
-    for i in range(6)
+    for i in range(5)
 ]
 
 technology_courses = [
@@ -35,11 +35,26 @@ technology_courses = [
     "Cloud Computing",
     "Artificial Intelligence and Robotics"
 ]
-courses = []
+
 subjects =[
     Subject(
         subject_name= random.choice(technology_courses),
         teacher_id = random.randint(1,5)
     )
-    for i in range(6)
+    for i in range(5)
 ]
+
+def add_students():
+    for student in students:
+        session.add(student)    
+    session.commit()
+    
+add_students()
+
+def add_teachers():
+    for teacher in teachers:
+        session.add(teacher)
+    session.commit()
+add_teachers()
+
+    

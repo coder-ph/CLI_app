@@ -25,7 +25,21 @@ teachers = [
         name = fake.name(),
         email = fake.email()
     )
-    for i in range(5)
+    for i in range(6)
 ]
 
-subj
+technology_courses = [
+    "Full-Stack Web Development",
+    "Data Science and Machine Learning",
+    "Cybersecurity",
+    "Cloud Computing",
+    "Artificial Intelligence and Robotics"
+]
+courses = []
+subjects =[
+    Subject(
+        subject_name= random.choice(technology_courses),
+        teacher_id = random.randint(1,5)
+    )
+    for i in range(6)
+]

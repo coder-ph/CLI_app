@@ -127,3 +127,6 @@ def delete_subject():
         return
     session.delete(subject)
     session.commit()
+
+def assign_student():
+    pass

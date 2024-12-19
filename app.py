@@ -50,7 +50,7 @@ def create_student():
     teacher = session.get(Teacher, teacher_id)
     subject = session.get(Subject, subject_id)
     
-    if not teacher or subject:
+    if not teacher or not subject:
         print(f"Either the teacher id ({teacher_id} or subject id {subject_id} does not exist: )")
         return
     
@@ -178,7 +178,7 @@ def students_by_teacher():
         
 def main_menu():
     while True:
-        print('\n Welcome to Student Management CLI!! \n')
+        print('\n *** Welcome to Student Management CLI ***\n')
         print('1. create a teacher')
         print('2. update teacher')
         print('3. delete teacher')
